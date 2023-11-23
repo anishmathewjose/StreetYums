@@ -1,0 +1,56 @@
+<% layout('layouts/boilerplate') %>
+    <link rel="stylesheet" href="/styles/indexPage.css">
+    <button type="button" class="btn btn-danger btn-floating btn-lg rounded-circle" id="btn-back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <div class="indexContainer">
+        <div class="indexList">
+            <h1>All Vendors</h1>
+            <% for (let i of vendors){%>
+                <div class="indexCard mb-3 ">
+                    <a href="/vendors/<%=i._id%>">
+                        <div class="d-flex">
+                            <div class="cardImgBox">
+                                <%if (i.images.length){%>
+                                    <img crossorigin="anonymous" class="cardImg img-fluid rounded-start"
+                                        src="<%=i.images[0].indexImg%>">
+                                    <% } %>
+                            </div>
+                            <div class="cardBody">
+                                <h5 class="card-title">
+                                    <%= i.title %>
+                                </h5>
+                                <div class="card-text">
+                                    <small class="text-muted">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <%=i.location %>
+                                    </small>
+                                </div>
+                                <div class="card-text">
+                                    <small class="text-muted">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <%=i.timings.start %> - <%=i.timings.end %>
+                                    </small>
+                                </div>
+                                <div class="card-text">
+                                    <small class="text-muted">
+                                        &#8377;<%=i.pricing.from%> - &#8377;<%=i.pricing.to %>
+                                    </small>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <% } %>
+        </div>
+        <div class="indexMap">
+            <div id="cluster-map"></div>
+        </div>
+    </div>
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const vendors = { features: JSON.parse('<%-JSON.stringify(vendors)%>') };
+    </script>
+    <script src=" /scripts/clusterMap.js">
+    </script>

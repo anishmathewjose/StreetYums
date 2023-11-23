@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
+
+a {
+    text-decoration: none;
+}
+
+.yums {
+    font-family: 'Leckerli One', cursive;
+    color: #FFA000;
+}
+
+#map {
+    width: auto;
+    height: 300px;
+    margin-bottom: 3vh;
+}
+
+.noReviews {
+    width: auto;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close {
+    color: rgb(45, 43, 43);
+}
+
+.close:hover {
+    color: black;
+}

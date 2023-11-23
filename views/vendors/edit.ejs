@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">Edit Vendor</h1>
+        <div class="col-md-6 offset-md-3 mb-3">
+            <form action="/vendors/<%=vendor._id%>?_method=PATCH" method="POST" novalidate class="needs-validation"
+                enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Name</label>
+                    <input class="form-control" type="text" id="title" name="vendor[title]" value="<%=vendor.title%>"
+                        required>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-9">
+                        <label class="form-label" for="location">Location</label>
+                        <input class="form-control" type="text" id="location" name="vendor[location]"
+                            value="<%=vendor.location%>" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="pincode">PIN Code</label>
+                        <input class="form-control" type="number" id="pincode" name="vendor[pincode]"
+                            value="<%=vendor.pincode%>" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Timings</span>
+                    <input type="time" class="form-control" name="vendor[timings][start]"
+                        value="<%=vendor.timings.start%>" required>
+                    <span class="input-group-text">-</span>
+                    <input type="time" class="form-control" name="vendor[timings][end]" value="<%=vendor.timings.end%>"
+                        required>
+                </div><br>
+                <div class="input-group">
+                    <span class="input-group-text">Price Range</span>
+                    <input type="number" class="form-control" name="vendor[pricing][from]" min="0" placeholder="₹"
+                        value="<%=vendor.pricing.from%>" required>
+                    <span class="input-group-text">-</span>
+                    <input type="number" class="form-control" name="vendor[pricing][to]" min="0" placeholder="₹"
+                        value="<%=vendor.pricing.to%>" required>
+                </div><br>
+                <div class="mb-3">
+                    <label class="form-label" for="phoneno">Phone number</label>
+                    <input class="form-control" type="number" id="phoneno" name="vendor[phoneno]"
+                        value="<%=vendor.phoneno%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="vendor[description]"
+                        required><%=vendor.description%></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Add images</label>
+                    <input class="form-control" type="file" name="image" id="image" multiple>
+                </div>
+                <div class="mb-3">
+                    <% vendor.images.forEach((img,i)=>{ %>
+                        <img src="<%=img.thumbnail%>" class="img-thumbnail ">
+                        <div class="form-check-inline"><label><input type="checkbox" name="deleteImages[]"
+                                    value="<%=img.filename%>"> <i class="fa-solid fa-trash"></i></label></div>
+                        <% }) %>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info ">Update Vendor</button>
+                    <a class="btn btn-danger" href="/vendors/<%=vendor._id%>">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
