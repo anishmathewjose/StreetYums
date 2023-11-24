@@ -4,7 +4,7 @@ const { lastname, firstname } = require('./seedHelpers');
 const Vendor = require('../models/vendor');
 const image = require('./images');
 
-mongoose.connect('mongodb://127.0.0.1:27017/street-yums')
+mongoose.connect(process.env.DB_URL)
     .then(() => {
         console.log("Database connected succesfully!")
     })
@@ -42,7 +42,7 @@ const seedDB = async () => {
         const lastimage = image[Math.floor(Math.random() * 20)];
         const randomLocation = places[Math.floor(Math.random() * 49)];
         const vendor = new Vendor({
-            author: '65548d40d4dadbc49718552c',
+            author: '65607268028cc84fe4f201d3',
             title: `${sample(firstname)} ${sample(lastname)}`,
             location: `${randomLocation.location}, Bhubaneswar`,
             pincode: randomLocation.pincode,
