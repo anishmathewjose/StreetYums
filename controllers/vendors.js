@@ -58,7 +58,7 @@ module.exports.updateVendor = async (req, res) => {
         }
         await vendor.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
     }
-    req.flash('success', 'Successfully updated campground!')
+    req.flash('success', 'Successfully updated vendor!')
     res.redirect(`/vendors/${vendor._id}`);
 }
 
