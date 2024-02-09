@@ -52,7 +52,7 @@
                         <% }) %>
                 </div>
                 <div>
-                    Locate on Map
+                    Drag and drop the marker to location on map
                     <div id="pin-map"></div>
                     <input type="hidden" value="Point" name="vendor[geometry][type]" required>
                     <input type="hidden" value=<%=vendor.geometry.coordinates[0]%> id="longitude"
@@ -75,12 +75,14 @@
         const map = new mapboxgl.Map({
             container: 'pin-map',
             // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-            style: 'mapbox://styles/mapbox/streets-v12',
+            style: 'mapbox://styles/anishmathewjose/clsf0wd7r008101qxffpy226i',
             center: [longitude.value, latitude.value],
-            zoom: 14
+            zoom: 15,
+            minZoom: 14
         });
 
         const marker = new mapboxgl.Marker({
+            color: "#AA4A44",
             draggable: true
         })
             .setLngLat([longitude.value, latitude.value])

@@ -9,12 +9,6 @@ a {
     color: #FFA000;
 }
 
-#map {
-    width: auto;
-    height: 300px;
-    margin-bottom: 3vh;
-}
-
 .noReviews {
     width: auto;
     height: 200px;
@@ -31,10 +25,16 @@ a {
     color: black;
 }
 
+#show-map {
+    width: auto;
+    height: 300px;
+    margin-bottom: 3vh;
+}
+
 #pin-map {
     width: 100%;
     height: 50vh;
-    margin-top: 2vh;
+    margin-top: 1.5vh;
     margin-bottom: 5vh;
 }
 
