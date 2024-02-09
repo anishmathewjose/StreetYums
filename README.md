@@ -24,7 +24,7 @@ For live demo click [here↗](https://streetyums.onrender.com/)
 * Basic CRUD App functionalities such as create, read, update and delete vendor details
 * Compare location, timings and prices of different vendors
 * Add or delete reviews
-* Estimate location by pincode using MapBox Geocoding API and display a cluster map of all vendors in the region
+* Pinpoint vendor on map and display a cluster map of all vendors in the region
 * Multiple image upload on the cloud using Cloudinary
 * Basic error handling and schema validation using JoiJS
 * Basic Authorization and Authentication using PassportJS
