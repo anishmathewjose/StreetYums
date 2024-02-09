@@ -22,7 +22,6 @@ imageSchema.virtual('showImg').get(function () {
 const vendorSchema = new Schema({
     title: String,
     location: String,
-    pincode: Number,
     geometry: {
         type: {
             type: String,

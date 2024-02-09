@@ -1,8 +1,5 @@
 const Vendor = require('../models/vendor');
 const { cloudinary } = require('../cloudinary');
-const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const mbxToken = process.env.MAPBOX_TOKEN;
-const geocodingClient = mbxGeocoding({ accessToken: mbxToken });
 
 module.exports.index = async (req, res) => {
     const vendors = await Vendor.find({});
@@ -14,12 +11,7 @@ module.exports.newVendor = (req, res) => {
 }
 
 module.exports.createVendor = async (req, res) => {
-    const geoData = await geocodingClient.forwardGeocode({
-        query: `${req.body.vendor.pincode}`,
-        limit: 1
-    }).send()
     const vendor = new Vendor(req.body.vendor);
-    vendor.geometry = geoData.body.features[0].geometry;
     vendor.images = req.files.map(f => ({ url: f.path, filename: f.filename }))
     vendor.author = req.user._id;
     await vendor.save();

@@ -27,7 +27,10 @@ module.exports.vendorSchema = Joi.object({
     vendor: Joi.object({
         title: Joi.string().required().escapeHTML(),
         location: Joi.string().required().escapeHTML(),
-        pincode: Joi.number().required(),
+        geometry: Joi.object({
+            type: Joi.string().valid('Point').required(),
+            coordinates: Joi.array().items(Joi.number()).required(),
+        }),
         timings: Joi.object({
             start: Joi.required(),
             end: Joi.required()
