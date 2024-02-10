@@ -7,15 +7,9 @@
                     <label class="form-label" for="title">Name</label>
                     <input class="form-control" type="text" id="title" name="vendor[title]" required>
                 </div>
-                <div class="row mb-4">
-                    <div class="col-md-9">
-                        <label class="form-label" for="location">Location</label>
-                        <input class="form-control" type="text" id="location" name="vendor[location]" required>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label" for="pincode">PIN Code</label>
-                        <input class="form-control" type="number" id="pincode" name="vendor[pincode]" required>
-                    </div>
+                <div class="mb-4">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="vendor[location]" required>
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Timings</span>
@@ -44,6 +38,15 @@
                     <label for="image" class="form-label">Images</label>
                     <input class="form-control" type="file" name="image" id="image" multiple>
                 </div>
+                <div>
+                    Drag and Drop the marker to location on map
+                    <div id="pin-map"></div>
+                    <input type="hidden" value="Point" name="vendor[geometry][type]" required>
+                    <input type="hidden" value=85.81934076715218 id="longitude" name="vendor[geometry][coordinates][0]"
+                        required>
+                    <input type="hidden" value=20.353703931903937 id="latitude" name="vendor[geometry][coordinates][1]"
+                        required>
+                </div>
                 <div class="mb-3">
                     <button class="btn btn-success">Add Vendor</button>
                     <a class="btn btn-danger" href="/vendors">Cancel</a>
@@ -51,3 +54,29 @@
             </form>
         </div>
     </div>
+    <script>
+        mapboxgl.accessToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const coordinates = document.getElementById('coordinates');
+        const map = new mapboxgl.Map({
+            container: 'pin-map',
+            // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+            style: 'mapbox://styles/anishmathewjose/clsf0wd7r008101qxffpy226i',
+            center: [85.81934076715218, 20.353703931903937],
+            zoom: 15,
+            minZoom: 14
+        });
+
+        const marker = new mapboxgl.Marker({
+            color: "#AA4A44",
+            draggable: true
+        })
+            .setLngLat([85.81934076715218, 20.353703931903937])
+            .addTo(map);
+
+        function onDragEnd() {
+            const lngLat = marker.getLngLat();
+            longitude.value = lngLat.lng;
+            latitude.value = lngLat.lat;
+        }
+        marker.on('dragend', onDragEnd);
+    </script>

@@ -1,14 +1,14 @@
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
-    container: 'map', // container ID
-    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+    container: 'show-map', // container ID
+    style: 'mapbox://styles/anishmathewjose/clsf0wd7r008101qxffpy226i', // style URL
     center: vendor.geometry.coordinates, // starting position [lng, lat]
-    zoom: 17, // starting zoom
-    minZoom: 10
+    zoom: 15, // starting zoom
+    minZoom: 14
 });
 
 map.addControl(new mapboxgl.NavigationControl());
 
-new mapboxgl.Marker({ color: "#AA4A44", scale: 0.75 })
+new mapboxgl.Marker({ color: "#AA4A44" })
     .setLngLat(vendor.geometry.coordinates)
     .addTo(map)

@@ -1,10 +1,10 @@
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
     container: 'cluster-map',
-    style: 'mapbox://styles/mapbox/streets-v12',
-    center: [85.830, 20.295],
-    zoom: 10.5,
-    minZoom: 10
+    style: 'mapbox://styles/anishmathewjose/clsf0wd7r008101qxffpy226i',
+    center: [85.81934076715218, 20.353703931903937],
+    zoom: 15,
+    minZoom: 14
 });
 
 map.addControl(new mapboxgl.NavigationControl());
@@ -14,8 +14,8 @@ map.on('load', () => {
         type: 'geojson',
         data: vendors,
         cluster: true,
-        clusterMaxZoom: 14, // Max zoom to cluster points on
-        clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
+        clusterMaxZoom: 15, // Max zoom to cluster points on
+        clusterRadius: 20 // Radius of each cluster when clustering points (defaults to 50)
     });
 
     map.addLayer({
@@ -27,20 +27,20 @@ map.on('load', () => {
             'circle-color': [
                 'step',
                 ['get', 'point_count'],
-                '#FFC107',
-                10,
                 '#FFA000',
-                20,
-                '#FF6F00'
+                6,
+                '#FFA000',
+                12,
+                '#FFA000'
             ],
             'circle-radius': [
                 'step',
                 ['get', 'point_count'],
                 10,
-                10,
-                20,
-                20,
-                30
+                6,
+                15,
+                12,
+                20
             ]
         }
     });
@@ -63,10 +63,8 @@ map.on('load', () => {
         source: 'vendors',
         filter: ['!', ['has', 'point_count']],
         paint: {
-            'circle-color': '#FFC107',
-            'circle-radius': 5,
-            'circle-stroke-width': 1,
-            'circle-stroke-color': '#FFC107'
+            'circle-color': '#FFA000',
+            'circle-radius': 6
         }
     });
 

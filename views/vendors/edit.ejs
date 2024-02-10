@@ -9,17 +9,10 @@
                     <input class="form-control" type="text" id="title" name="vendor[title]" value="<%=vendor.title%>"
                         required>
                 </div>
-                <div class="row mb-4">
-                    <div class="col-md-9">
-                        <label class="form-label" for="location">Location</label>
-                        <input class="form-control" type="text" id="location" name="vendor[location]"
-                            value="<%=vendor.location%>" required>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label" for="pincode">PIN Code</label>
-                        <input class="form-control" type="number" id="pincode" name="vendor[pincode]"
-                            value="<%=vendor.pincode%>" required>
-                    </div>
+                <div class="mb-4">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="vendor[location]"
+                        value="<%=vendor.location%>" required>
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Timings</span>
@@ -58,6 +51,17 @@
                                     value="<%=img.filename%>"> <i class="fa-solid fa-trash"></i></label></div>
                         <% }) %>
                 </div>
+                <div>
+                    Drag and drop the marker to location on map
+                    <div id="pin-map"></div>
+                    <input type="hidden" value="Point" name="vendor[geometry][type]" required>
+                    <input type="hidden" value=<%=vendor.geometry.coordinates[0]%> id="longitude"
+                    name="vendor[geometry][coordinates][0]"
+                    required>
+                    <input type="hidden" value=<%=vendor.geometry.coordinates[1]%> id="latitude"
+                    name="vendor[geometry][coordinates][1]"
+                    required>
+                </div>
                 <div class="mb-3">
                     <button class="btn btn-info ">Update Vendor</button>
                     <a class="btn btn-danger" href="/vendors/<%=vendor._id%>">Cancel</a>
@@ -65,3 +69,29 @@
             </form>
         </div>
     </div>
+    <script>
+        mapboxgl.accessToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const coordinates = document.getElementById('coordinates');
+        const map = new mapboxgl.Map({
+            container: 'pin-map',
+            // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+            style: 'mapbox://styles/anishmathewjose/clsf0wd7r008101qxffpy226i',
+            center: [longitude.value, latitude.value],
+            zoom: 15,
+            minZoom: 14
+        });
+
+        const marker = new mapboxgl.Marker({
+            color: "#AA4A44",
+            draggable: true
+        })
+            .setLngLat([longitude.value, latitude.value])
+            .addTo(map);
+
+        function onDragEnd() {
+            const lngLat = marker.getLngLat();
+            longitude.value = lngLat.lng;
+            latitude.value = lngLat.lat;
+        }
+        marker.on('dragend', onDragEnd);
+    </script>
