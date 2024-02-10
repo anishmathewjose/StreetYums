@@ -23,7 +23,7 @@ For live demo click [here↗](https://streetyums.onrender.com/)
 ## Features
 * Basic CRUD App functionalities such as create, read, update and delete vendor details
 * Compare location, timings and prices of different vendors
-* Add or delete reviews
+* Give star rating and write reviews for any vendor
 * Drag and drop vendor location and display a cluster map of all vendors in the region
 * Multiple image upload on the cloud using Cloudinary
 * Basic error handling and schema validation using JoiJS
