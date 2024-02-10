@@ -1,5 +1,5 @@
 # StreetYums
-A full-stack web application that allow users to compare, review and share information about street food vendors around Bhubaneswar, India.
+A full-stack web application that allow users to compare, review and share information about street food vendors around KIIT campus.
 
 For live demo click [here↗](https://streetyums.onrender.com/)
 ## Tools and Technologies
@@ -24,7 +24,7 @@ For live demo click [here↗](https://streetyums.onrender.com/)
 * Basic CRUD App functionalities such as create, read, update and delete vendor details
 * Compare location, timings and prices of different vendors
 * Add or delete reviews
-* Pinpoint vendor on map and display a cluster map of all vendors in the region
+* Drag and drop vendor location and display a cluster map of all vendors in the region
 * Multiple image upload on the cloud using Cloudinary
 * Basic error handling and schema validation using JoiJS
 * Basic Authorization and Authentication using PassportJS
