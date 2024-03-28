@@ -21,16 +21,14 @@ For live demo click [here↗](https://streetyums.onrender.com/)
 * Render
 
 ## Features
-* Basic CRUD App functionalities such as create, read, update and delete vendor details
-* Compare location, timings and prices of different vendors
-* Give star rating and write reviews for any vendor
-* Drag and drop vendor location and display a cluster map of all vendors in the region
-* Multiple image upload on the cloud using Cloudinary
-* Basic error handling and schema validation using JoiJS
-* Basic Authorization and Authentication using PassportJS
-* Flash messages responds to user interaction with the app
-* Mitigates common security issues using HelmetJS and a Content Security Policy
-* Responsive web design ensuring optimal functionality on any device
+* Compare location, timings and prices of street food vendors around KIIT campus
+* Rate & review vendors or add/edit/delete your own street food vendor details (e.g., phone number, location,
+images)
+* Uses Mapbox API to display an interactive cluster map of all vendors
+* Uses Cloudinary for efficient storage of images on the cloud
+* Authentication, Authorization, Content Security Policy and both client & server side validation ensures the
+user data isn’t compromised
+* Clear error messages, helpful notifications and responsive design ensures a user friendly experience
 
 ## Installation
 ### Clone or download this repository
