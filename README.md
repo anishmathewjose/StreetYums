@@ -25,7 +25,6 @@ For live demo click [here↗](https://streetyums.onrender.com/)
 * Rate & review vendors or add/edit/delete your own street food vendor details (e.g., phone number, location,
 images)
 * Uses Mapbox API to display an interactive cluster map of all vendors
-* Uses Cloudinary for efficient storage of images on the cloud
 * Authentication, Authorization, Content Security Policy and both client & server side validation ensures the
 user data isn’t compromised
 * Clear error messages, helpful notifications and responsive design ensures a user friendly experience
